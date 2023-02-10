@@ -1,0 +1,38 @@
+:root {
+    --border-1: #eee;
+    --shadow-1: #ccc;
+}
+
+.students {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid var(--border-1);
+    box-shadow: 0 2px 3px var(--shadow-1);
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.students label {
+    display:block;
+    margin: 10px auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.students input {
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+
+
+
+
+@media (min-width: 500px) {
+    .students {
+        width: 450px;
+    }
+}
