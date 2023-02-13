@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Students from './components/students/students'
 import Button from './components/UI/button/button'
+import NewStudent from './components/students/newStudent/newStudent'
 
 const App = () => {
   const [studentsState, setStudentsState] = useState([
@@ -13,9 +14,14 @@ const App = () => {
   const [toggle, setToggle] = useState(false)
   const [arrayHolder, setArrayHolder] = useState([])
   const [searchBarValue, setSearchBarValue] = useState('')
+  const [studentName, setStudentName] = useState('')
+  const [studentClass, setStudentClass] = useState('')
+  const [studentMobile, setStudentMobile] = useState('')
+  const [studentEmail, setStudentEmail] = useState('')
 
   useEffect(() => {
     setArrayHolder(studentsState)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const searchFilterFunc = (event) => {
@@ -73,8 +79,47 @@ const App = () => {
   const toggleHandler = () => {
     setToggle(!toggle)
   }
+
+  const studentNameHandler = (event) => {
+    setStudentName(event.target.value)
+  }
+  const studentClassHandler = (event) => {
+    setStudentClass(event.target.value)
+  }
+  const studentMobileHandler = (event) => {
+    setStudentMobile(event.target.value)
+  }
+  const studentEmailHandler = (event) => {
+    setStudentEmail(event.target.value)
+  }
+  const addStudent = () => {
+    const newStudentsState = [...studentsState]
+    newStudentsState.push({
+      'id': studentsState.length,
+      'name': studentName,
+      'classNumber': studentClass,
+      'phoneNumber': studentMobile,
+      'email': studentEmail
+    })
+    setStudentsState(newStudentsState)
+    setStudentName('')
+    setStudentClass('')
+    setStudentMobile('')
+    setStudentEmail('')
+  }
   return (
     <div className="App">
+      <NewStudent
+        studentName={studentName}
+        studentClass={studentClass}
+        studentMobile={studentMobile}
+        studentEmail={studentEmail}
+        studentNameHandler={studentNameHandler}
+        studentClassHandler={studentClassHandler}
+        studentMobileHandler={studentMobileHandler}
+        studentEmailHandler={studentEmailHandler}
+        addStudent={addStudent}
+      />
       <input type="text" value={searchBarValue} onChange={searchFilterFunc} />
       <Button
         btnType="success"
