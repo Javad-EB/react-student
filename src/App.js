@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Students from './components/students/students'
 import Button from './components/UI/button/button'
 import NewStudent from './components/students/newStudent/newStudent'
 
 const App = () => {
+  const inputEl = useRef(null)
   const [studentsState, setStudentsState] = useState([
     { id: 0, name: 'Javad', classNumber: 201, phoneNumber: 9131231122, email: 'javad@gmail.com' },
     { id: 1, name: 'Alireza', classNumber: 211, phoneNumber: 9131232233, email: 'Alireza@gmail.com' },
@@ -21,6 +22,7 @@ const App = () => {
 
   useEffect(() => {
     setArrayHolder(studentsState)
+    inputEl.current.focus()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -107,6 +109,10 @@ const App = () => {
     setStudentMobile('')
     setStudentEmail('')
   }
+
+  const exeScroll = () => {
+    window.scrollTo(0, inputEl.current.offsetTop)
+  }
   return (
     <div className="App">
       <NewStudent
@@ -120,7 +126,7 @@ const App = () => {
         studentEmailHandler={studentEmailHandler}
         addStudent={addStudent}
       />
-      <input type="text" value={searchBarValue} onChange={searchFilterFunc} />
+      <input type="text" value={searchBarValue} onChange={searchFilterFunc} ref={inputEl} />
       <Button
         btnType="success"
         clicked={toggleHandler}
@@ -136,6 +142,9 @@ const App = () => {
         delete={deleteStudent}
         toggle={toggle}
       />
+      <Button clicked={exeScroll}>
+        Scroll to SearchBar
+      </Button>
     </div>
   );
 }

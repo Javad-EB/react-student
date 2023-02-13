@@ -3,7 +3,7 @@ import clasess from './newStudent.module.css'
 import Button from '../../UI/button/button';
 import PropTypes from 'prop-types'
 import WithClass from '../../hoc/WithClass'
-import Wrapper from '../../hoc/Wrapper';
+
 
 
 
@@ -12,7 +12,7 @@ const NewStudent = (props) => {
     const { studentNameHandler, studentClassHandler, studentMobileHandler, studentEmailHandler, addStudent } = props
 
     return (
-        <Wrapper className="newStudent">
+        <React.Fragment className="newStudent">
             <h1>Add New Student</h1>
             <label htmlFor="name">Full Name</label>
             <input type="text" id="name" value={studentName} onChange={studentNameHandler} />
@@ -26,7 +26,7 @@ const NewStudent = (props) => {
                 clicked={addStudent}
                 btnType='danger'
             >Add New Student</Button>
-        </Wrapper>
+        </React.Fragment>
     )
 }
 
