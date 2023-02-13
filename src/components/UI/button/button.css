@@ -1,0 +1,25 @@
+.button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.danger {
+    background-color: red;
+}
+
+.success {
+    background-color: green;
+    ;
+}
