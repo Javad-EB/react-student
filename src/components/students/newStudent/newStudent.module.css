@@ -10,6 +10,7 @@
     border: 1px solid var(--border-1);
     box-shadow: 0 2px 3px var(--shadow-1);
     text-align: center;
+    margin-top: 65px;
 }
 
 .newStudent label {

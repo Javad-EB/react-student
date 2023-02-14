@@ -3,6 +3,7 @@ import './App.css';
 import Students from './components/students/students'
 import Button from './components/UI/button/button'
 import NewStudent from './components/students/newStudent/newStudent'
+import Toolbar from './container/Header/Toolbar/Toolbar'
 
 const App = () => {
   const inputEl = useRef(null)
@@ -37,7 +38,9 @@ const App = () => {
   }
 
   const nameChangeHandler = (event, id) => {
-    const studentIndex = studentsState.findIndex(student => student.id === id)
+    const studentIndex = studentsState.findIndex(
+      student => student.id === id
+    )
     const student = { ...studentsState[studentIndex] }
     student.name = event.target.value
     const students = [...studentsState]
@@ -115,6 +118,7 @@ const App = () => {
   }
   return (
     <div className="App">
+      <Toolbar />
       <NewStudent
         studentName={studentName}
         studentClass={studentClass}
