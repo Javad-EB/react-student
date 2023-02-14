@@ -5,14 +5,12 @@ import PropTypes from 'prop-types'
 import WithClass from '../../hoc/WithClass'
 
 
-
-
 const NewStudent = (props) => {
     const { studentName, studentClass, studentMobile, studentEmail } = props
     const { studentNameHandler, studentClassHandler, studentMobileHandler, studentEmailHandler, addStudent } = props
 
     return (
-        <React.Fragment className="newStudent">
+        <React.Fragment>
             <h1>Add New Student</h1>
             <label htmlFor="name">Full Name</label>
             <input type="text" id="name" value={studentName} onChange={studentNameHandler} />

@@ -21,3 +21,17 @@
     color: #3b053bd1;
     cursor: pointer;
 }
+
+@media (max-width:499px) {
+    .MenuItem {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 10px 0;
+    }
+
+    .MenuItem a{
+        width: 100%;
+        padding-left: 0;
+    }
+}

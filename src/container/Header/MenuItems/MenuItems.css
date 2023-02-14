@@ -6,3 +6,10 @@
     align-items: center;
     list-style: none;
 }
+
+
+@media (max-width:499px) {
+    .MenuItems {
+        flex-direction: column;
+    }
+}

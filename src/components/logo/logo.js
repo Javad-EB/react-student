@@ -2,9 +2,9 @@ import React from 'react';
 import MyLogo from '../../assets/images/logo.png'
 import './logo.css'
 
-const Logo = () => {
+const Logo = (props) => {
     return (
-        <div className='Logo'>
+        <div className='Logo' style={{ height: props.height }}>
             <img src={MyLogo} alt="Logo of site" />
         </div>
     )

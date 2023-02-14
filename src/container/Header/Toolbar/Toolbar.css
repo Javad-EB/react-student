@@ -22,3 +22,36 @@
 .Toolbar nav {
     height: 100%;
 }
+
+.hamburger-lines {
+    display: block;
+    height: 26px;
+    width: 32px;
+    position: absolute;
+    top: 17px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-lines .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: #0e2431;
+}
+
+@media (max-width: 499px) {
+    .showNav {
+        display: none;
+    }
+}
+
+@media (min-width: 500px) {
+    .showIcon {
+        display: none;
+    }
+}

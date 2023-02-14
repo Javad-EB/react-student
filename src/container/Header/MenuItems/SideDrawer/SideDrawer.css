@@ -1,0 +1,47 @@
+.SideDrawer {
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background-color: #fff;
+    padding: 30px 15px;
+    box-sizing: border-box;
+    -webkit-transition: transform 0.3s ease-out;
+    -moz-transition: transform 0.3s ease-out;
+    -ms-transition: transform 0.3s ease-out;
+    -o-transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Open {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.Close {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.boxbtn{
+    position: absolute;
+    bottom: 10%;
+}
+
+
+@media (min-width:500px) {
+    .SideDrawer {
+        display: none;
+    }
+}

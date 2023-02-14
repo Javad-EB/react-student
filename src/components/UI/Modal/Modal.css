@@ -1,0 +1,46 @@
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: #fff;
+    width: 70%;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #eee;
+    padding: 16px;
+    left: 15%;
+    top: 30%;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.ShowModal {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.CloseModal {
+    -webkit-transform: translateX(-100vw);
+    -moz-transform: translateX(-100vw);
+    -ms-transform: translateX(-100vw);
+    -o-transform: translateX(-100vw);
+    transform: translateX(-100vw);
+    opacity: 0;
+}
+@media(min-width: 600px) {
+    .Modal {
+        width: 500px;
+        left: calc(50% - 250px);
+    }
+}
