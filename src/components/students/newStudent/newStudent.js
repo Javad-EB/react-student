@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clasess from './newStudent.module.css'
 import Button from '../../UI/button/button';
 import PropTypes from 'prop-types'
 import WithClass from '../../hoc/WithClass'
 
-
 const NewStudent = (props) => {
+    useEffect(() => {
+        console.log(props)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     const { studentName, studentClass, studentMobile, studentEmail } = props
     const { studentNameHandler, studentClassHandler, studentMobileHandler, studentEmailHandler, addStudent } = props
 

@@ -2,29 +2,27 @@ import React from 'react';
 import './student.css'
 import Button from '../../UI/button/button'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 const Student = (props) => {
     return (
         <div className='students'>
             <label>Student Number: {props.id}</label>
-            <label htmlFor="fName">Full Name</label>
-            <input type="text" id='fName' value={props.name} onChange={props.nameChange} />
-
-            <label htmlFor="cNumber">Class Number</label>
-            <input type="text" id='cNumber' value={props.classNumber} onChange={props.classNumberChange} />
-
-            <label htmlFor="mob">Mobile</label>
-            <input id='mob' type="number" value={props.phoneNumber} onChange={props.phoneNumberChange} />
-
-            <label htmlFor='email'>Email</label>
-            <input type="email" id='email' value={props.email} onChange={props.emailChange} />
-
+            <label>Full Name: {props.name}</label>
+            <label>Class Number: {props.classNumber}</label>
+            <label>Mobile: {props.phoneNumber}</label>
+            <label>Email: {props.email}</label>
             <Button
                 btnType="danger"
                 clicked={props.delete}
             >
                 Delete
             </Button>
+            <Link to={"/student/"+props.id}>
+                <Button>
+                    Edit
+                </Button>
+            </Link>
         </div>
     )
 }

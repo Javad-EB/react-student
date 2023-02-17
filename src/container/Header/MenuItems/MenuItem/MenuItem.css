@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-.MenuItem a{
+.MenuItem a {
     color: #9e9e9e;
     text-decoration: none;
     height: 100%;
@@ -15,11 +15,34 @@
     display: block;
 }
 
-.MenuItem a:hover,
-.MenuItem a:active,
-.MenuItem a.active {
-    color: #3b053bd1;
+.MenuItem a:hover {
+    color: red;
     cursor: pointer;
+}
+
+.MenuItem a.myStyle {
+    color: green;
+    font-weight: bold;
+}
+
+.MenuItem a.myStyle::after {
+    content: '';
+    width: 0;
+    height: 0.15rem;
+    background: red;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0.4rem;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.MenuItem a.myStyle:hover::after {
+    width: 5%;
 }
 
 @media (max-width:499px) {
@@ -30,7 +53,7 @@
         margin: 10px 0;
     }
 
-    .MenuItem a{
+    .MenuItem a {
         width: 100%;
         padding-left: 0;
     }

@@ -26,10 +26,10 @@ const Toolbar = (props) => {
         <header className='Toolbar'>
             <SideDrawer show={openSideDrawer} closeSideDrawer={closeSideDrawer} />
             <div className="showIcon" onClick={sideDrawerHandler}>
-                <div class="hamburger-lines">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                    <span class="line"></span>
+                <div className="hamburger-lines">
+                    <span className="line"></span>
+                    <span className="line"></span>
+                    <span className="line"></span>
                 </div>
             </div>
             <span className="showNav">

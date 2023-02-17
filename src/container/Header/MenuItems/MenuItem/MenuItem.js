@@ -1,16 +1,14 @@
 import React from "react";
+import { NavLink } from 'react-router-dom'
 import './MenuItem.css'
 
 const MenuItem = (props) => {
-    const classes = []
-    if (props.active) {
-        classes.push('active')
-    }
+    let activeClassName = 'myStyle'
     return (
         <li className="MenuItem">
-            <a href={props.link} className={classes}>
+            <NavLink to={props.link} exact className={({isActive}) => isActive ? activeClassName : undefined }>
                 {props.children}
-            </a>
+            </NavLink>
         </li>
     )
 }

@@ -28,12 +28,12 @@
   color: #61dafb;
 }
 
-input {
+.search-bar {
   width: 90%;
   height: 30px;
   border-radius: 5px;
   padding: 5px;
-  margin-top: 20px;
+  margin-top: 75px;
 }
 
 @keyframes App-logo-spin {

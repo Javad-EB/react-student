@@ -5,11 +5,11 @@ import MenuItem from './MenuItem/MenuItem'
 const MenuItems = () => {
     return (
         <ul className="MenuItems">
-            <MenuItem link="/" active>
+            <MenuItem link="/">
                 Main Page
             </MenuItem>
-            <MenuItem link="/">
-                Register Student
+            <MenuItem link="/add-student">
+                Add Student
             </MenuItem>
         </ul>
     )
