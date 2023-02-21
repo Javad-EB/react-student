@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Students from '../components/students/students'
 import Button from '../components/UI/button/button'
+import { useNavigate } from "react-router-dom"
 
 const HomePage = (props) => {
     const [studentsState, setStudentsState] = useState([
@@ -22,40 +23,6 @@ const HomePage = (props) => {
         setStudentsState(itemData)
         setSearchBarValue(event.target.value)
     }
-    const nameChangeHandler = (event, id) => {
-        const studentIndex = studentsState.findIndex(
-            student => student.id === id
-        )
-        const student = { ...studentsState[studentIndex] }
-        student.name = event.target.value
-        const students = [...studentsState]
-        students[studentIndex] = student
-        setStudentsState(students)
-    }
-    const classNumberChangeHandler = (event, id) => {
-        const studentIndex = studentsState.findIndex(student => student.id === id)
-        const student = { ...studentsState[studentIndex] }
-        student.classNumber = event.target.value
-        const students = [...studentsState]
-        students[studentIndex] = student
-        setStudentsState(students)
-    }
-    const phoneNumberChangeHandler = (event, id) => {
-        const studentIndex = studentsState.findIndex(student => student.id === id)
-        const student = { ...studentsState[studentIndex] }
-        student.phoneNumber = event.target.value
-        const students = [...studentsState]
-        students[studentIndex] = student
-        setStudentsState(students)
-    }
-    const emailChangeHandler = (event, id) => {
-        const studentIndex = studentsState.findIndex(student => student.id === id)
-        const student = { ...studentsState[studentIndex] }
-        student.email = event.target.value
-        const students = [...studentsState]
-        students[studentIndex] = student
-        setStudentsState(students)
-    }
     const deleteStudent = (index) => {
         const students = [...studentsState]
         students.splice(index, 1)
@@ -67,10 +34,16 @@ const HomePage = (props) => {
     useEffect(() => {
         setArrayHolder(studentsState)
         inputEl.current.focus()
-        console.log(props)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
+    const exeScroll = () => {
+        window.scrollTo(0, inputEl.current.offsetTop)
+    }
+    let navigate = useNavigate()
+    const edited = (id) => {
+        console.log(id)
+        navigate('/student/' + id)
+    }
     return (
         <React.Fragment>
             <input type="text" value={searchBarValue} onChange={searchFilterFunc} ref={inputEl} className="search-bar" />
@@ -82,13 +55,13 @@ const HomePage = (props) => {
             </Button>
             <Students
                 studentsList={studentsState}
-                nameChange={nameChangeHandler}
-                classNumberChange={classNumberChangeHandler}
-                phoneNumberChange={phoneNumberChangeHandler}
-                emailChange={emailChangeHandler}
                 delete={deleteStudent}
                 toggle={toggle}
+                edited={edited}
             />
+            <Button clicked={exeScroll}>
+                Scroll to SearchBar
+            </Button>
         </React.Fragment>
     )
 

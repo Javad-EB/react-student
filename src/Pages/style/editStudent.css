@@ -1,0 +1,33 @@
+:root {
+    --border-1: #eee;
+    --shadow-1: #ccc;
+}
+
+.newStudent {
+    width: 80%;
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid var(--border-1);
+    box-shadow: 0 2px 3px var(--shadow-1);
+    text-align: center;
+    margin-top: 65px;
+}
+
+.newStudent label {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.newStudent input {
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid var(--shadow-1);
+    outline: none;
+    box-sizing: border-box;
+    margin: auto;
+    width: 90%;
+}

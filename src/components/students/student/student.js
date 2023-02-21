@@ -2,7 +2,7 @@ import React from 'react';
 import './student.css'
 import Button from '../../UI/button/button'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom';
+
 
 const Student = (props) => {
     return (
@@ -18,11 +18,10 @@ const Student = (props) => {
             >
                 Delete
             </Button>
-            <Link to={"/student/"+props.id}>
-                <Button>
-                    Edit
-                </Button>
-            </Link>
+            <Button
+                clicked={props.edited}>
+                Edit
+            </Button>
         </div>
     )
 }
