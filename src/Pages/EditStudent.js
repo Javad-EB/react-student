@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react';
 import Button from '../components/UI/button/button'
 import './style/editStudent.css'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 const EditStudent = (props) => {
+    const { studentid } = useParams()
     useEffect(() => {
-        console.log(props)
-    })
+        axios.get(`/posts/${studentid}`)
+            .then(response => {
+                console.log(response.data)
+            })
+    },[studentid])
     const editStudent = () => {
         alert('Successfull')
     }

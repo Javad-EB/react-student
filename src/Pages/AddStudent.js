@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import NewStudent from '../components/students/newStudent/newStudent'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const AddStudent = (props) => {
     const [studentName, setStudentName] = useState('')
     const [studentClass, setStudentClass] = useState('')
     const [studentMobile, setStudentMobile] = useState('')
     const [studentEmail, setStudentEmail] = useState('')
-    const [result, setResult] = useState(false)
+    const [error, setError] = useState(false)
     useEffect(() => {
         console.log(props)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    }, [])
     const studentNameHandler = (event) => {
         setStudentName(event.target.value)
     }
@@ -24,14 +25,33 @@ const AddStudent = (props) => {
     const studentEmailHandler = (event) => {
         setStudentEmail(event.target.value)
     }
+    let navigate = useNavigate()
     const addStudent = () => {
-        alert('Student Added')
-        setResult(true)
+        const data = {
+            title: 'foo',
+            body: 'bar',
+            userId: 1
+        }
+        axios.post('/posts', data)
+            .then(response => {
+                setError(false)
+                console.log(response)
+                navigate("/");
+            }).catch(error => {
+                setError(true)
+                console.log(error)
+            })
+        // alert('Student Added')
+        // setResult(true)
     }
-
+    let ErrorMessage = null
+    if (error) {
+        ErrorMessage = <h1 style={{ textAlign: 'center', color: 'red', marginTop:"70px" }}>Progress didn't complete! Please try later.</h1>
+    }
     return (
         <React.Fragment>
-            {result && <Navigate replace to="/" />}
+            {ErrorMessage}
+            {/* {result && <Navigate replace to="/" />} */}
             <NewStudent
                 studentName={studentName}
                 studentClass={studentClass}

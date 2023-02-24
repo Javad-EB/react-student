@@ -18,8 +18,9 @@ const Students = (props) => {
                     classNumberChange={(event) => props.classNumberChange(event, student.id)}
                     phoneNumberChange={(event) => props.phoneNumberChange(event, student.id)}
                     emailChange={(event) => props.emailChange(event, student.id)}
-                    delete={props.delete}
+                    delete={() => props.delete(student.id)}
                     edited={() => props.edited(student.id)}
+                    score={student.score}
                 />
             </ErrorBoundary>
         )

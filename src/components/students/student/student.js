@@ -12,6 +12,7 @@ const Student = (props) => {
             <label>Class Number: {props.classNumber}</label>
             <label>Mobile: {props.phoneNumber}</label>
             <label>Email: {props.email}</label>
+            <label>Score: {props.score}</label>
             <Button
                 btnType="danger"
                 clicked={props.delete}
