@@ -18,3 +18,33 @@ img{
     padding: 0;
     margin: 0;
 }
+
+.captcha_view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+    width: 95%;
+}
+
+.captcha_view input{
+    flex: 2;
+}
+
+.captcha_view img {
+    height: 40px;
+    margin: 5px;
+}
+
+.captcha_view p{
+    font-size: 22px;
+    text-align: center;
+    color: #000;
+}
+
+.errormsg{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}

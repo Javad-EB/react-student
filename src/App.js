@@ -7,7 +7,6 @@ import AddStudent from '../src/Pages/AddStudent'
 import EditStudent from '../src/Pages/EditStudent'
 
 // const AddStudent = React.lazy(() => import('../src/Pages/AddStudent'))
-
 const App = () => {
   return (
     <div className="App">
