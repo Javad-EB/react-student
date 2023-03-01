@@ -1,26 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Student from './student/student'
 import './student/student.css'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
 const Students = (props) => {
-    let studentsList = (
+
+    let students = (
         props.studentsList.map((student, index) =>
             <ErrorBoundary key={index}>
                 <Student
-                    id={student.id}
-                    name={student.name}
-                    classNumber={student.classNumber}
-                    phoneNumber={student.phoneNumber}
-                    email={student.email}
-                    nameChange={(event) => props.nameChange(event, student.id)}
-                    classNumberChange={(event) => props.classNumberChange(event, student.id)}
-                    phoneNumberChange={(event) => props.phoneNumberChange(event, student.id)}
-                    emailChange={(event) => props.emailChange(event, student.id)}
-                    delete={() => props.delete(student.id)}
-                    edited={() => props.edited(student.id)}
-                    score={student.score}
+                    id={student.student_id}
+                    name={student.student_name}
+                    classNumber={student.student_class}
+                    phoneNumber={student.student_phone_number}
+                    email={student.student_email}
+                    delete={() => props.delete(student.student_id)}
+                    edited={() => props.edited(student.student_id)}
                 />
             </ErrorBoundary>
         )
@@ -28,21 +24,17 @@ const Students = (props) => {
     if (props.toggle) {
         return (
             <div className='student-section'>
-                {studentsList}
+                {students}
             </div>
         )
     }
-    return studentsList
+    return students
 }
 
 export default React.memo(Students)
-Students.prototype = {
+/* Students.prototype = {
     studentsList: PropTypes.array.isRequired,
-    nameChange: PropTypes.func.isRequired,
-    classNumberChange: PropTypes.func.isRequired,
-    phoneNumberChange: PropTypes.func.isRequired,
-    emailChange: PropTypes.func.isRequired,
     delete: PropTypes.func.isRequired,
     toggle: PropTypes.bool.isRequired
 
-}
+} */

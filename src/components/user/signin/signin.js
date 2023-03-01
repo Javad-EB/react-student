@@ -4,6 +4,8 @@ import Button from '../../UI/button/button'
 import './signin.css'
 import reaload from '../../../assets/images/reload.png'
 import { AuthContext } from '../../../context/auth/authContext'
+import { useNavigate } from 'react-router-dom'
+
 
 
 const Signin = (props) => {
@@ -48,6 +50,7 @@ const Signin = (props) => {
         setErrorMessage('')
         return true
     }
+    let navigate = useNavigate()
     const loginHandler = () => {
         if (sumHolder === captchaValue) {
             setErrorMessage('')
@@ -71,6 +74,7 @@ const Signin = (props) => {
                     .then((responseJson) => {
                         if (responseJson === "Data Matched") {
                             dispatch({ type: 'login', payload: username })
+                            navigate('/')
                         }
                         else {
                             setErrorMessage(responseJson)

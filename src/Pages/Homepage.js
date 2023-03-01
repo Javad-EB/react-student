@@ -6,43 +6,37 @@ import axios from '../axios'
 import Spinner from '../components/UI/spinner/spinner'
 import ErrorHandler from '../components/hoc/ErrorHandler'
 import { AuthContext } from '../context/auth/authContext'
-
-
+import { StudentsContext } from '../context/students/studentsContext'
 
 const HomePage = (props) => {
-    const [studentsState, setStudentsState] = useState([])
     const [arrayHolder, setArrayHolder] = useState([])
     const inputEl = useRef(null)
     const [searchBarValue, setSearchBarValue] = useState('')
     const [toggle, setToggle] = useState(false)
     const [loading, setLoading] = useState(false)
     const { authenticated } = useContext(AuthContext)
+    const { dispatch, studentsState } = useContext(StudentsContext)
 
     const searchFilterFunc = (event) => {
         const itemData = arrayHolder.filter((item) => {
-            const itemData = item.name.toUpperCase()
+            const itemData = item.student_name.toUpperCase()
             const textData = event.target.value.toUpperCase()
             return itemData.indexOf(textData) > -1
         })
-        setStudentsState(itemData)
+        dispatch({ type: 'search', payload: itemData })
         setSearchBarValue(event.target.value)
     }
 
     useEffect(() => {
-        setArrayHolder(studentsState)
         inputEl.current.focus()
         setLoading(true)
-        axios.get('/posts')
-            .then(response => {
-                const students = response.data.slice(0, 10)
-                const updatedStudents = students.map(student => {
-                    return {
-                        ...student,
-                        score: 20,
-                    }
-                })
-                setStudentsState(updatedStudents)
+        fetch('http://10.0.0.6/student/showStudent.php')
+            .then((response) => response.json())
+            .then((responceJson) => {
                 setLoading(false)
+                dispatch({ type: 'fetch', payload: responceJson })
+                setArrayHolder(responceJson)
+
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -54,12 +48,21 @@ const HomePage = (props) => {
             alert('Please Login, You dont have Access to delete student')
             return false
         } else {
-            const students = [...studentsState]
-            let index = id - 1
-            students.splice(index, 1)
-            axios.delete(`/posts/${id}`)
-                .then(response => console.log(response))
-            setStudentsState(students)
+            fetch('http://10.0.0.6/student/deleteStudent.php', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    student_id: id
+                })
+            }).then((response) => response.json())
+                .then((responceJson) => {
+                    dispatch({ type: 'remove', id: id })
+                }).catch((err) => {
+                    alert('err')
+                })
         }
     }
     const toggleHandler = () => {

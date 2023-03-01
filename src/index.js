@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 import ThemeContextProvider from './context/Theme/themeContext'
-axios.defaults.baseURL = 'https://jsonplaceholder.ir'
+
+axios.defaults.baseURL = 'http://10.0.0.6/student/'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
