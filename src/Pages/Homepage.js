@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import Students from '../components/students/students'
 import Button from '../components/UI/button/button'
 import { useNavigate } from "react-router-dom"
 import axios from '../axios'
 import Spinner from '../components/UI/spinner/spinner'
 import ErrorHandler from '../components/hoc/ErrorHandler'
+import { AuthContext } from '../context/auth/authContext'
+
 
 
 const HomePage = (props) => {
@@ -14,6 +16,7 @@ const HomePage = (props) => {
     const [searchBarValue, setSearchBarValue] = useState('')
     const [toggle, setToggle] = useState(false)
     const [loading, setLoading] = useState(false)
+    const { authenticated } = useContext(AuthContext)
 
     const searchFilterFunc = (event) => {
         const itemData = arrayHolder.filter((item) => {
@@ -47,12 +50,17 @@ const HomePage = (props) => {
     }, [studentsState])
 
     const deleteStudent = (id) => {
-        const students = [...studentsState]
-        let index = id - 1
-        students.splice(index, 1)
-        axios.delete(`/posts/${id}`)
-            .then(response => console.log(response))
-        setStudentsState(students)
+        if (!authenticated) {
+            alert('Please Login, You dont have Access to delete student')
+            return false
+        } else {
+            const students = [...studentsState]
+            let index = id - 1
+            students.splice(index, 1)
+            axios.delete(`/posts/${id}`)
+                .then(response => console.log(response))
+            setStudentsState(students)
+        }
     }
     const toggleHandler = () => {
         setToggle(!toggle)

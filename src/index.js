@@ -4,14 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
-
-axios.defaults.baseURL= 'https://jsonplaceholder.ir'
+import ThemeContextProvider from './context/Theme/themeContext'
+axios.defaults.baseURL = 'https://jsonplaceholder.ir'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
   </React.StrictMode>
 );
 

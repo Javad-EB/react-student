@@ -1,17 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Button from '../components/UI/button/button'
 import './style/editStudent.css'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { AuthContext } from '../context/auth/authContext'
+
 
 const EditStudent = (props) => {
     const { studentid } = useParams()
+    const { authenticated } = useContext(AuthContext)
+    let navigate = useNavigate()
     useEffect(() => {
+        if (!authenticated) {
+            navigate("/")
+        }
         axios.get(`/posts/${studentid}`)
             .then(response => {
                 console.log(response.data)
             })
-    },[studentid])
+    }, [authenticated, navigate, studentid])
     const editStudent = () => {
         alert('Successfull')
     }

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import myLogo from '../../../assets/images/logo.png'
 import Button from '../../UI/button/button'
 import './signin.css'
 import reaload from '../../../assets/images/reload.png'
+import { AuthContext } from '../../../context/auth/authContext'
 
 
 const Signin = (props) => {
@@ -13,6 +14,7 @@ const Signin = (props) => {
     const [errorMessage, setErrorMessage] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const { dispatch } = useContext(AuthContext)
 
     useEffect(() => {
         generateCaptcha()
@@ -54,7 +56,7 @@ const Signin = (props) => {
             headers.append('Content-Type', 'application/json');
             headers.append('Accept', 'application/json');
             // headers.append('Origin','http://localhost:3000');
-            
+
             const validateResult = validate()
             if (validateResult) {
                 fetch('http://10.0.0.6/student/user_login.php', {
@@ -68,7 +70,7 @@ const Signin = (props) => {
                     .then((response) => response.json())
                     .then((responseJson) => {
                         if (responseJson === "Data Matched") {
-                            alert(responseJson)
+                            dispatch({ type: 'login', payload: username })
                         }
                         else {
                             setErrorMessage(responseJson)

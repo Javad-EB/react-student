@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import NewStudent from '../components/students/newStudent/newStudent'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { AuthContext } from '../context/auth/authContext'
 
 const AddStudent = (props) => {
     const [studentName, setStudentName] = useState('')
@@ -9,8 +10,11 @@ const AddStudent = (props) => {
     const [studentMobile, setStudentMobile] = useState('')
     const [studentEmail, setStudentEmail] = useState('')
     const [error, setError] = useState(false)
+    const { authenticated } = useContext(AuthContext)
     useEffect(() => {
-        console.log(props)
+        if (!authenticated) {
+            navigate("/")
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const studentNameHandler = (event) => {
@@ -46,13 +50,12 @@ const AddStudent = (props) => {
     }
     let ErrorMessage = null
     if (error) {
-        ErrorMessage = <h1 style={{ textAlign: 'center', color: 'red', marginTop:"70px" }}>Progress didn't complete! Please try later.</h1>
+        ErrorMessage = <h1 style={{ textAlign: 'center', color: 'red', marginTop: "70px" }}>Progress didn't complete! Please try later.</h1>
     }
     return (
         <React.Fragment>
             {ErrorMessage}
-            {/* {result && <Navigate replace to="/" />} */}
-            <NewStudent
+            < NewStudent
                 studentName={studentName}
                 studentClass={studentClass}
                 studentMobile={studentMobile}
