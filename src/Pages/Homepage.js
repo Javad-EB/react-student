@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 import axios from '../axios'
 import Spinner from '../components/UI/spinner/spinner'
 import ErrorHandler from '../components/hoc/ErrorHandler'
-import { AuthContext } from '../context/auth/authContext'
 import { StudentsContext } from '../context/students/studentsContext'
 
 const HomePage = (props) => {
@@ -14,7 +13,6 @@ const HomePage = (props) => {
     const [searchBarValue, setSearchBarValue] = useState('')
     const [toggle, setToggle] = useState(false)
     const [loading, setLoading] = useState(false)
-    const { authenticated } = useContext(AuthContext)
     const { dispatch, studentsState } = useContext(StudentsContext)
 
     const searchFilterFunc = (event) => {
@@ -36,15 +34,20 @@ const HomePage = (props) => {
                 setLoading(false)
                 dispatch({ type: 'fetch', payload: responceJson })
                 setArrayHolder(responceJson)
-
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     useEffect(() => {
     }, [studentsState])
 
+    let auth = false
+    const userInfo = JSON.parse(localStorage.getItem('user'))
+    if (userInfo) {
+        auth = true
+    }
+
     const deleteStudent = (id) => {
-        if (!authenticated) {
+        if (!auth) {
             alert('Please Login, You dont have Access to delete student')
             return false
         } else {
@@ -72,9 +75,17 @@ const HomePage = (props) => {
         window.scrollTo(0, inputEl.current.offsetTop)
     }
     let navigate = useNavigate()
-    const edited = (id) => {
-        console.log(id)
-        navigate('/student/' + id)
+    const edited = (id, name, classNumber, phoneNumber, email) => {
+        //console.log(id, name, classNumber, phoneNumber, email)
+        navigate('/student/' + id, {
+            state: {
+                id: id,
+                name: name,
+                classNumber: classNumber,
+                phoneNumber: phoneNumber,
+                email: email
+            }
+        })
     }
     return (
         <React.Fragment>

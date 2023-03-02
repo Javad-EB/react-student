@@ -1,7 +1,21 @@
-    let auth = false
-    const userInfo = JSON.parse(localStorage.getItem('user'))
-    if (userInfo) {
-        auth = true
-    }
+import { useEffect } from "react"
+import { useNavigate } from 'react-router-dom'
 
-export { auth }
+const Auth = () => {
+    let navigate = useNavigate()
+    const userInfo = JSON.parse(localStorage.getItem('user'))
+    useEffect(() => {
+        if (userInfo) {
+            navigate("/")
+        } 
+    })
+}
+
+export default Auth
+
+
+
+
+
+
+

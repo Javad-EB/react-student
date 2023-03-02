@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Student from './student/student'
 import './student/student.css'
 // import PropTypes from 'prop-types'
@@ -7,7 +7,7 @@ import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 const Students = (props) => {
 
     let students = (
-        props.studentsList.map((student, index) =>
+        props.studentsList.map((student, index) => 
             <ErrorBoundary key={index}>
                 <Student
                     id={student.student_id}
@@ -16,7 +16,13 @@ const Students = (props) => {
                     phoneNumber={student.student_phone_number}
                     email={student.student_email}
                     delete={() => props.delete(student.student_id)}
-                    edited={() => props.edited(student.student_id)}
+                    edited={() => props.edited(
+                        student.student_id,
+                        student.student_name,
+                        student.student_class,
+                        student.student_phone_number,
+                        student.student_email,
+                        )}
                 />
             </ErrorBoundary>
         )

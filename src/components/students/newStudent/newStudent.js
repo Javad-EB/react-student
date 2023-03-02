@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import clasess from './newStudent.module.css'
 import Button from '../../UI/button/button';
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import WithClass from '../../hoc/WithClass'
 
 const NewStudent = (props) => {
@@ -33,13 +33,13 @@ const NewStudent = (props) => {
 
 export default React.memo(WithClass(NewStudent, clasess.newStudent))
 
-NewStudent.prototype = {
-    studentName: PropTypes.string.isRequired,
-    studentNameHandler: PropTypes.func.isRequired,
-    studentClass: PropTypes.number.isRequired,
-    studentClassHandler: PropTypes.func.isRequired,
-    studentMobile: PropTypes.number.isRequired,
-    studentMobileHandler: PropTypes.func.isRequired,
-    studentEmail: PropTypes.string.isRequired,
-    studentEmailHandler: PropTypes.func.isRequired
-}
+// NewStudent.prototype = {
+//     studentName: PropTypes.string.isRequired,
+//     studentNameHandler: PropTypes.func.isRequired,
+//     studentClass: PropTypes.number.isRequired,
+//     studentClassHandler: PropTypes.func.isRequired,
+//     studentMobile: PropTypes.number.isRequired,
+//     studentMobileHandler: PropTypes.func.isRequired,
+//     studentEmail: PropTypes.string.isRequired,
+//     studentEmailHandler: PropTypes.func.isRequired
+// }
