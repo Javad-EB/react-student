@@ -11,6 +11,18 @@ const MenuItems = () => {
             <MenuItem link="/add-student">
                 Add Student
             </MenuItem>
+            <MenuItem link="/transition">
+                CSS TRANSITION
+            </MenuItem>
+            <MenuItem link="/animation">
+                ANIMATION
+            </MenuItem>
+            <MenuItem link="/mixtransition">
+                MixTransition
+            </MenuItem>
+            <MenuItem link='/mixanimation'>
+                MixAnimation
+            </MenuItem>
         </ul>
     )
 }

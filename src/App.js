@@ -8,6 +8,10 @@ import EditStudent from '../src/Pages/EditStudent'
 import AuthContextProvider from './context/auth/authContext'
 import { ThemeContext } from './context/Theme/themeContext';
 import StudentsContextProvider from './context/students/studentsContext'
+import Transition from './components/animation/transition'
+import Animation from './components/animation/animation'
+import MixTransition from './components/animation/mixTransition'
+import MixAnimation from './components/animation/mixAnimation'
 // const AddStudent = React.lazy(() => import('../src/Pages/AddStudent'))
 const App = () => {
   const themeContext = useContext(ThemeContext)
@@ -29,6 +33,10 @@ const App = () => {
           } /> */}
               <Route path='/student/:studentid' element={<EditStudent />} />
               <Route path="*" element={<h1>Not Found</h1>} />
+              <Route path="/transition" element={<Transition />} />
+              <Route path='/animation' element={<Animation />} />
+              <Route path='/mixtransition' element={<MixTransition />} />
+              <Route path='/mixanimation' element={<MixAnimation />} />
             </Routes>
           </Router>
         </div>
