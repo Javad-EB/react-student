@@ -3,6 +3,7 @@ import Clicker from './clicker'
 import { cleanup, fireEvent, render, screen, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 afterEach(cleanup)
+//we must use useFakeTimers to run jest.advanceTimersByTime
 jest.useFakeTimers()
 describe('<Clicker />', () => {
     it('renders correctly', () => {
