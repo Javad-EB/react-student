@@ -1,9 +1,8 @@
 import React from 'react'
 import Header from './header'
-import { render, screen } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { isDisabled } from '@testing-library/user-event/dist/utils'
-
+afterEach(cleanup)
 it('rendersnapshot <Header />', () => {
     const { asFragment } = render(<Header text="hello" />)
     // expect(asFragment()).toMatchSnapshot()
@@ -20,5 +19,5 @@ it('render', () => {
 it('render button', () => {
     render(<Header text="hello" />)
     expect(screen.getByTestId('ok-button')).toHaveAttribute('disabled')
-    expect(screen.getByTestId('ok-button')).toHaveAttribute('type','submit')
+    expect(screen.getByTestId('ok-button')).toHaveAttribute('type', 'submit')
 })
