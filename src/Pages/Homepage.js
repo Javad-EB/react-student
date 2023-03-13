@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react'
 import Students from '../components/students/students'
 import Button from '../components/UI/button/button'
 import { useNavigate } from "react-router-dom"
-import axios from '../axios'
+import axios from 'axios'
 import Spinner from '../components/UI/spinner/spinner'
 import ErrorHandler from '../components/hoc/ErrorHandler'
 import { StudentsContext } from '../context/students/studentsContext'

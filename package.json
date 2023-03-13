@@ -2,6 +2,7 @@
   "name": "react-student",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/user-event": "^13.5.0",
     "@types/react-transition-group": "^4.4.5",
@@ -23,9 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon",
-    "proxy": "http://localhost:3000"
-  },
+    "server": "nodemon"
+    },
   "eslintConfig": {
     "extends": [
       "react-app",

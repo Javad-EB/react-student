@@ -18,10 +18,10 @@ const App = () => {
   const { lightTheme, light, dark } = themeContext
   const theme = lightTheme ? light : dark
   return (
-    <AuthContextProvider>
-      <StudentsContextProvider>
-        <div className="App" style={{ background: theme.bg, color: theme.syntax }}>
-          <Router>
+    <Router>
+      <AuthContextProvider>
+        <StudentsContextProvider>
+          <div className="App" style={{ background: theme.bg, color: theme.syntax }}>
             <Toolbar />
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -38,10 +38,10 @@ const App = () => {
               <Route path='/mixtransition' element={<MixTransition />} />
               <Route path='/mixanimation' element={<MixAnimation />} />
             </Routes>
-          </Router>
-        </div>
-      </StudentsContextProvider>
-    </AuthContextProvider>
+          </div>
+        </StudentsContextProvider>
+      </AuthContextProvider>
+    </Router>
   )
 }
 
